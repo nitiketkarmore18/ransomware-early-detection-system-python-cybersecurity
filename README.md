@@ -165,7 +165,8 @@ The dashboard contains components for:
                     │    React Dashboard      │
                     │ Visualization & Alerts  │
                     └─────────────────────────┘
-🧠 Detection Methodology
+                    ---
+## 🧠 Detection Methodology
 Shannon Entropy
 
 The project uses Shannon entropy to measure the randomness of file contents.
