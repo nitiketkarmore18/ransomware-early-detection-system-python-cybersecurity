@@ -1,537 +1,775 @@
-# 🛡️ Ransomware Early Warning & Detection System
+# 🛡️ Ransomware Early Warning Detection System
 
-A Python-based cybersecurity system designed to provide **early warning against potential ransomware activity** by monitoring file-system behavior, analyzing file entropy, tracking suspicious processes, and generating security alerts through a web-based monitoring dashboard.
+A Python-based cybersecurity system designed to detect potential ransomware activity at an early stage by monitoring file-system behavior, analyzing file entropy, and tracking suspicious processes.
 
-The system combines a **Python monitoring and detection backend** with a **React-based frontend dashboard** to provide a centralized view of suspicious file activity and ransomware-related indicators.
+The system continuously monitors file activity, calculates Shannon entropy values, identifies abnormal changes in file characteristics, and provides security alerts through a React-based cybersecurity dashboard.
 
 ---
 
 ## 📌 Project Overview
 
-Ransomware attacks often cause rapid and widespread file modifications, encryption, and abnormal changes in file entropy.
+### Description
 
-This project focuses on detecting these behavioral indicators at an early stage rather than waiting for a ransomware attack to completely encrypt a system.
+Ransomware attacks can rapidly encrypt large numbers of files, making early detection extremely important.
 
-The system continuously monitors selected file-system activity and analyzes files using **Shannon entropy**. Files exhibiting unusually high entropy can indicate encryption or other suspicious transformations.
+This project implements an early-warning mechanism that combines:
 
-The project also includes process monitoring and folder watching components to provide multiple signals for ransomware detection.
+- File-system monitoring
+- Shannon entropy analysis
+- Process monitoring
+- Suspicious activity detection
+- Automated alert generation
+- Dashboard visualization
 
-### Core Detection Concept
+The backend performs security monitoring and analysis, while the frontend provides a web-based interface for viewing entropy results and security alerts.
 
-The system uses file entropy as one of the primary indicators.
+### System Components
 
-A file with highly random or encrypted-looking content generally has higher Shannon entropy than normal text or structured files.
-
-The system therefore evaluates:
-
-- File entropy
-- File size
-- File activity
-- Suspicious process activity
-- Folder/file-system changes
-
-These signals are used to classify file activity into different risk levels and generate alerts when suspicious behavior is detected.
+- Python-based cybersecurity backend
+- React-based monitoring dashboard
+- File-system monitoring
+- Process monitoring
+- Entropy analysis
+- Alert generation
+- JSON-based result processing
 
 ---
 
 ## 🎯 Objectives
 
-The main objectives of this project are:
+### Detection
 
-- Detect potential ransomware activity at an early stage.
-- Monitor file-system activity continuously.
-- Calculate Shannon entropy for monitored files.
-- Identify files exhibiting suspiciously high entropy.
-- Monitor running processes for potentially suspicious activity.
-- Track changes within monitored folders.
-- Generate security alerts based on detected activity.
-- Provide a centralized web dashboard for monitoring results.
-- Demonstrate a practical cybersecurity detection architecture using Python and React.
+- Detect suspicious file activity at an early stage
+- Identify files exhibiting unusually high entropy
+- Detect abnormal file modifications
+- Identify potentially suspicious processes
 
----
+### Monitoring
 
-## 🚀 Key Features
+- Monitor file-system activity
+- Monitor running processes
+- Analyze monitored files
+- Track suspicious activity
 
-### 🔍 File Entropy Analysis
+### Visualization
 
-The system calculates the Shannon entropy of files to determine the randomness of their contents.
-
-Entropy values are used to classify files into different risk levels.
-
-Typical interpretation:
-
-| Entropy Level | Interpretation |
-|---|---|
-| Low | Normal / structured content |
-| Medium | Potentially unusual content |
-| High | Potentially encrypted or suspicious content |
-
-The project uses a high-entropy threshold as one of the indicators for detecting potentially encrypted files.
+- Display entropy analysis results
+- Display security alerts
+- Provide a centralized monitoring dashboard
+- Make security analysis easier to understand
 
 ---
 
-### 📁 Folder Monitoring
+## ✨ Key Features
 
-The system monitors file-system activity through the folder watcher component.
+### Ransomware Detection
 
-It can detect file-related activity and trigger further analysis when relevant changes occur.
+- Shannon entropy-based file analysis
+- Entropy-based file classification
+- Suspicious file activity detection
+- Early-warning detection mechanism
 
-This allows the system to react to file-system behavior instead of relying only on manual scanning.
+### File-System Monitoring
 
----
+- Continuous file monitoring
+- Detection of newly created files
+- Detection of modified files
+- Automatic file analysis
 
-### ⚙️ Process Monitoring
+### Process Monitoring
 
-The project includes process monitoring functionality to observe running processes and identify potentially suspicious activity.
+- Monitoring of active processes
+- Detection of potentially suspicious processes
+- Process activity analysis
 
-This provides an additional detection signal alongside entropy analysis.
+### Alert System
 
----
+- Automated security alerts
+- Suspicious activity classification
+- Entropy-based alert information
+- Security monitoring results
 
-### 🚨 Security Alerts
+### Dashboard
 
-Suspicious activity can be processed by the alerting component.
-
-The alert mechanism is designed to provide an early indication when monitored activity crosses the configured detection criteria.
-
----
-
-### 📊 Entropy Aggregation
-
-The system includes an entropy aggregation component that processes entropy analysis results and helps organize the collected file-analysis information.
-
----
-
-### 🖥️ Web Dashboard
-
-A React-based frontend provides a visual interface for monitoring the ransomware detection system.
-
-The dashboard contains components for:
-
-- Security alerts
+- React-based cybersecurity dashboard
 - Entropy visualization
-- Analysis results
-- Monitoring information
-- Project information
-- Navigation
-- Dashboard sections
+- Alert table
+- Results page
+- Monitoring interface
+- Responsive user interface
 
 ---
 
-## 🏗️ System Architecture
+## 🛠️ Technology Stack
 
-```text
-                    ┌─────────────────────────┐
-                    │      File System        │
-                    │  Monitored Directories  │
-                    └────────────┬────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │     Folder Watcher      │
-                    │   File Activity Monitor  │
-                    └────────────┬────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │    Entropy Analysis     │
-                    │    Shannon Entropy      │
-                    └────────────┬────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │   Entropy Aggregator    │
-                    │   Risk Classification   │
-                    └────────────┬────────────┘
-                                 │
-                  ┌──────────────┴──────────────┐
-                  │                             │
-                  ▼                             ▼
-       ┌─────────────────────┐       ┌─────────────────────┐
-       │ Process Monitoring  │       │   Alert Detection   │
-       │                     │       │                     │
-       └──────────┬──────────┘       └──────────┬──────────┘
-                  │                             │
-                  └──────────────┬──────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │     Backend / API       │
-                    │        Python           │
-                    └────────────┬────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │    React Dashboard      │
-                    │ Visualization & Alerts  │
-                    └─────────────────────────┘
- ```
- ---
+### Backend
+
+- Python
+- Shannon Entropy Analysis
+- File-System Monitoring
+- Process Monitoring
+- JSON-based Result Processing
+
+### Frontend
+
+- React
+- JavaScript
+- CSS
+- Recharts
+
+### Libraries
+
+- Watchdog
+- Axios
+- Socket.IO
+- Recharts
+- React Router
+- Framer Motion
+
+### Development Tools
+
+- Git
+- GitHub
+- Visual Studio Code
+- PowerShell
+- npm
+
+---
+
 ## 🧠 Detection Methodology
+
 ### Shannon Entropy
 
-The project uses Shannon entropy to measure the randomness of file contents.
+Shannon entropy is used to measure the randomness of file contents.
 
-The entropy of a file can be represented as:
+Ransomware-encrypted files generally exhibit higher entropy because encrypted data appears more random than normal text or structured files.
 
-H(X) = -Σ p(x) log₂ p(x)
+The system uses entropy as one of the indicators for identifying potentially suspicious file behavior.
 
-where:
+### Entropy Analysis
 
-H(X) represents entropy.
-p(x) represents the probability of each byte value occurring in the file.
+The system:
 
-The entropy value ranges from:
+- Reads monitored file contents
+- Calculates Shannon entropy
+- Evaluates the entropy value
+- Classifies the file
+- Stores the analysis result
+- Uses the result for suspicious activity detection
 
-0 → 8 bits per byte
+### File Classification
 
-A value closer to 8 generally indicates highly random data.
+Analyzed files contain information such as:
 
-Encrypted files commonly exhibit high entropy, which makes entropy analysis useful as one indicator of ransomware-related encryption behavior.
+- File name
+- Entropy value
+- File size
+- Classification level
 
-Important: High entropy alone does not prove that a file is ransomware-encrypted. Compressed files, encrypted legitimate files, binaries, and other normal data can also have high entropy. Therefore, this project treats entropy as a detection signal rather than definitive proof of ransomware.
+Example:
 
-## 📈 Risk Classification
+- `testfile_0.txt` — Entropy: `3.52` — Safe
+- `testfile_1.txt` — Entropy: `6.49` — Safe
+- `testfile_10.txt` — Entropy: `6.49` — Safe
 
-The system assigns a risk level to analyzed files based on their entropy and analysis results.
+---
 
-Example classification:
+## 🔄 System Workflow
 
-                File Analysis
-                     │
-                     ▼
-              Calculate Entropy
-                     │
-                     ▼
-              Compare Threshold
-                     │
-          ┌──────────┼──────────┐
-          │          │          │
-          ▼          ▼          ▼
-        SAFE       MEDIUM      HIGH
-          │          │          │
-          │          │          ▼
-          │          │       Generate
-          │          │        Alert
-          │          │
-          └──────────┴──────────► Dashboard
+### Detection Workflow
 
-The project uses a configurable high-entropy threshold for identifying potentially suspicious files.
+~~~
+File Activity
+      ↓
+File-System Monitoring
+      ↓
+Entropy Calculation
+      ↓
+Entropy Classification
+      ↓
+Suspicious Activity Detection
+      ↓
+Alert Generation
+      ↓
+Dashboard Visualization
+~~~
 
-## 🧰 Technology Stack
-Backend
-Python
-File-system monitoring
-Shannon entropy analysis
-Process monitoring
-JSON-based analysis results
-Frontend
-React
-JavaScript
-CSS
-Recharts
-Axios
-React Router
-Framer Motion
-Socket.IO
-Development Tools
-Git
-GitHub
-Node.js
-npm
-PowerShell
+### Backend Workflow
+
+~~~
+Monitored Files
+      ↓
+folder_watcher.py
+      ↓
+entropy_mointer.py
+      ↓
+entropy_utils.py
+      ↓
+Entropy Analysis
+      ↓
+entropy_aggregator.py
+      ↓
+JSON Results
+      ↓
+Alert Processing
+~~~
+
+### Frontend Workflow
+
+~~~
+Backend Results
+      ↓
+API / Socket Communication
+      ↓
+React Application
+      ↓
+Dashboard Components
+      ↓
+Charts + Alerts + Results
+~~~
+
+---
 
 ## 📂 Project Structure
-ransomware-early-detection-system-python-cybersecurity/
+
+### Root Directory
+
+~~~
+Ransomware_Early_Warning System/
 │
 ├── backend/
-│   │
-│   ├── __init__.py
-│   ├── alert.py
-│   ├── entropy_aggregator.py
-│   ├── entropy_mointer.py
-│   ├── entropy_utils.py
-│   ├── folder_watcher.py
-│   ├── main.py
-│   ├── process_mointer.py
-│   ├── watchdog_runner.py
-│   ├── requirements.txt
-│   │
-│   ├── README.md.txt
-│   │
-│   └── test_files/
-│       ├── testfile_0.txt
-│       ├── testfile_1.txt
-│       ├── testfile_2.txt
-│       ├── ...
-│       └── testfile_21.txt
-│
 ├── frontend/
-│   │
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── server.js
-│   ├── public/
-│   │   └── index.html
-│   │
-│   └── src/
-│       ├── App.js
-│       ├── AppContainer.js
-│       ├── Footer.js
-│       ├── ResultsPage.js
-│       ├── index.js
-│       ├── index.css
-│       │
-│       ├── pages/
-│       │   └── Home.jsx
-│       │
-│       └── components/
-│           ├── AboutSection.jsx
-│           ├── AlertTable.js
-│           ├── CoursesSection.jsx
-│           ├── EntropyChart.js
-│           ├── Footer.jsx
-│           ├── HeroSection.jsx
-│           └── Navbar.jsx
-│
 ├── package.json
 ├── package-lock.json
 └── .gitignore
+~~~
+
+### Backend
+
+~~~
+backend/
+│
+├── README.md.txt
+├── __init__.py
+├── alert.py
+├── entropy_aggregator.py
+├── entropy_mointer.py
+├── entropy_utils.py
+├── folder_watcher.py
+├── main.py
+├── process_mointer.py
+├── requirements.txt
+├── watchdog_runner.py
+└── test_files/
+    ├── testfile_0.txt
+    ├── testfile_1.txt
+    ├── testfile_2.txt
+    ├── testfile_3.txt
+    ├── testfile_4.txt
+    ├── testfile_5.txt
+    ├── testfile_6.txt
+    ├── testfile_7.txt
+    ├── testfile_8.txt
+    ├── testfile_9.txt
+    ├── testfile_10.txt
+    ├── testfile_11.txt
+    ├── testfile_12.txt
+    ├── testfile_13.txt
+    ├── testfile_14.txt
+    ├── testfile_15.txt
+    ├── testfile_16.txt
+    ├── testfile_17.txt
+    ├── testfile_18.txt
+    ├── testfile_19.txt
+    ├── testfile_20.txt
+    └── testfile_21.txt
+~~~
+
+### Frontend
+
+~~~
+frontend/
+│
+├── package.json
+├── package-lock.json
+├── public/
+│   └── index.html
+├── server.js
+└── src/
+    ├── App.js
+    ├── AppContainer.js
+    ├── Footer.js
+    ├── ResultsPage.js
+    ├── index.css
+    ├── index.js
+    │
+    ├── components/
+    │   ├── AboutSection.jsx
+    │   ├── AlertTable.js
+    │   ├── CoursesSection.jsx
+    │   ├── EntropyChart.js
+    │   ├── Footer.jsx
+    │   ├── HeroSection.jsx
+    │   └── Navbar.jsx
+    │
+    └── pages/
+        └── Home.jsx
+~~~
+
 ---
 
-## ⚙️ Installation & Setup
-1. Clone the Repository
-git clone https://github.com/nitiketkarmore18/ransomware-early-detection-system-python-cybersecurity.git
+## ⚙️ Backend Components
 
-Navigate into the project:
+### Entropy Analysis
 
-cd ransomware-early-detection-system-python-cybersecurity
+`entropy_utils.py` contains the functionality used for calculating and processing file entropy.
 
-## 🐍 Backend Setup
+### Entropy Monitoring
 
-Navigate to the backend directory:
+`entropy_mointer.py` handles entropy monitoring and analysis of monitored files.
 
-cd backend
+### Entropy Aggregation
 
-Create a Python virtual environment:
+`entropy_aggregator.py` processes and aggregates entropy analysis results.
 
-Windows
-python -m venv venv
+### File-System Monitoring
 
-Activate it:
+`folder_watcher.py` monitors file-system activity and detects file changes that require analysis.
 
-venv\Scripts\activate
+### Process Monitoring
 
-Install the required dependencies:
+`process_mointer.py` monitors active system processes and supports the ransomware detection workflow.
 
-pip install -r requirements.txt
+### Alert Processing
 
-## ▶️ Running the Backend
+`alert.py` handles security-related alert processing based on suspicious activity.
 
-From the backend directory:
+### Application Entry Point
 
-python main.py
+`main.py` acts as one of the primary backend entry points for running the monitoring functionality.
 
-If the project is intended to be started through the watchdog runner:
+### Watchdog Runner
 
-python watchdog_runner.py
+`watchdog_runner.py` supports the execution of the file-system monitoring workflow.
 
-The appropriate entry point depends on the monitoring workflow being tested.
+### Test Files
 
-## ⚛️ Frontend Setup
+The `test_files/` directory contains sample files used for testing entropy analysis and file-system monitoring functionality.
 
-Open a new terminal and navigate to the frontend:
+---
 
-cd frontend
+## 🖥️ Frontend Components
 
-Install dependencies:
+### Main Application
 
-npm install
+`App.js` initializes the React application.
 
-Start the React development server:
+### Application Container
 
-npm start
+`AppContainer.js` manages the primary application structure and dashboard flow.
 
-The dashboard will normally be available at:
+### Home Page
 
-http://localhost:3000
+`Home.jsx` provides the main dashboard interface.
 
-## 🔬 Testing the Detection System
+### Results Page
 
-The repository contains sample files under:
+`ResultsPage.js` provides the interface for displaying analysis results.
 
-backend/test_files/
+### Entropy Chart
 
-These files can be used to test the entropy-analysis functionality.
+`EntropyChart.js` visualizes entropy analysis data using the frontend charting functionality.
 
-The system analyzes the file contents and calculates their entropy values.
+### Alert Table
 
-Example result structure:
+`AlertTable.js` displays security alerts and suspicious activity information.
 
+### Navigation
+
+`Navbar.jsx` provides navigation functionality for the dashboard.
+
+### Hero Section
+
+`HeroSection.jsx` provides the main introductory section of the dashboard.
+
+### About Section
+
+`AboutSection.jsx` provides information about the project and its purpose.
+
+### Courses Section
+
+`CoursesSection.jsx` provides the relevant dashboard content included in the frontend.
+
+### Footer
+
+`Footer.js` and `Footer.jsx` provide footer content for the application.
+
+---
+
+## 📊 Entropy Results
+
+### Result Data
+
+The system processes entropy results containing information such as:
+
+~~~json
 {
     "name": "testfile_0.txt",
     "entropy": 3.5263039714678293,
     "size": 31,
     "level": "safe"
 }
+~~~
 
-The result contains:
+### Result Fields
 
-name → analyzed file name
-entropy → calculated Shannon entropy
-size → file size
-level → classification assigned by the system
+- `name` — Name of the analyzed file
+- `entropy` — Calculated Shannon entropy
+- `size` — File size
+- `level` — Classification level
 
-## 📊 Dashboard
+### Generated Results
 
-The frontend dashboard provides visual representations of the detection system.
+Entropy analysis results are generated during system execution.
 
-Major dashboard components include:
+Runtime-generated result data is excluded from Git tracking when appropriate so that generated monitoring data does not unnecessarily become part of the source repository.
 
-Entropy Chart
+---
 
-Displays entropy-related information for analyzed files.
+## 🚀 Installation
 
-Alert Table
+### Prerequisites
 
-Provides a structured view of detected alerts.
+Before running the project, install:
 
-Results Page
+- Python
+- Node.js
+- npm
+- Git
 
-Displays analysis results generated by the backend.
+### Clone Repository
 
-Home Dashboard
+~~~bash
+git clone https://github.com/nitiketkarmore18/ransomware-early-detection-system-python-cybersecurity.git
+~~~
 
-Provides the main interface for interacting with the ransomware early-warning system.
+### Navigate to Project
+
+~~~bash
+cd ransomware-early-detection-system-python-cybersecurity
+~~~
+
+---
+
+## 🐍 Backend Setup
+
+### Navigate to Backend
+
+~~~bash
+cd backend
+~~~
+
+### Create Virtual Environment
+
+~~~bash
+python -m venv venv
+~~~
+
+### Activate Virtual Environment
+
+#### Windows PowerShell
+
+~~~powershell
+.\venv\Scripts\Activate.ps1
+~~~
+
+### Install Dependencies
+
+~~~bash
+pip install -r requirements.txt
+~~~
+
+### Run Backend
+
+Depending on the required workflow, run the appropriate backend entry point:
+
+~~~bash
+python main.py
+~~~
+
+or:
+
+~~~bash
+python watchdog_runner.py
+~~~
+
+---
+
+## ⚛️ Frontend Setup
+
+### Navigate to Frontend
+
+From the project root:
+
+~~~bash
+cd frontend
+~~~
+
+### Install Dependencies
+
+~~~bash
+npm install
+~~~
+
+### Start Development Server
+
+~~~bash
+npm start
+~~~
+
+The React development server will normally run on:
+
+~~~text
+http://localhost:3000
+~~~
+
+---
+
+## 🔗 Backend and Frontend Communication
+
+### Communication
+
+The frontend and backend are structured to work together as part of the monitoring and visualization workflow.
+
+The project includes communication technologies such as:
+
+- Axios
+- Socket.IO
+- REST-style backend communication
+- React-based visualization
+
+### Backend Results
+
+Backend monitoring and analysis results can be processed and presented by the frontend dashboard for visualization and security monitoring.
+
+---
+
+## 🧪 Testing
+
+### Test Files
+
+The backend contains multiple test files inside:
+
+~~~
+backend/test_files/
+~~~
+
+These files can be used to test entropy analysis and file-system monitoring functionality.
+
+### Entropy Testing
+
+The system analyzes test files and generates entropy values that can be used to verify the classification workflow.
+
+### Dashboard Testing
+
+The React dashboard can be tested by running:
+
+~~~bash
+npm start
+~~~
+
+and accessing the local development server.
+
+---
+
+## 📈 Dashboard
+
+### Dashboard Capabilities
+
+The dashboard provides a centralized interface for viewing:
+
+- Entropy analysis
+- File classifications
+- Security alerts
+- Monitoring information
+- Analysis results
+
+### Visualization
+
+The project uses chart-based visualization to represent entropy-related information and provide a more understandable representation of the analysis results.
+
+---
 
 ## 🔐 Security Considerations
 
-This project is designed as a defensive cybersecurity research and monitoring system.
+### Early-Warning Approach
 
-It focuses on identifying behavioral indicators associated with ransomware activity.
+This project is intended as an early-warning and behavioral monitoring system rather than a complete enterprise ransomware prevention solution.
 
-The system should be used in controlled environments for:
+### Entropy Limitations
 
-Cybersecurity research
-Educational demonstrations
-Security monitoring experiments
-File-system behavior analysis
-Ransomware detection research
+High entropy alone does not prove that a file is encrypted by ransomware.
 
-The system should not be treated as a complete enterprise-grade ransomware protection solution.
+Legitimate files such as:
 
-Entropy-based detection can produce both:
+- Compressed files
+- Encrypted files
+- Images
+- Videos
+- Archives
 
-False positives
-False negatives
+may also naturally have high entropy.
 
-Therefore, production-grade ransomware detection should combine multiple signals such as:
+Therefore, entropy analysis should be combined with additional behavioral indicators.
 
-File modification frequency
-File extension changes
-Process behavior
-Entropy changes
-Process lineage
-User activity
-Network behavior
-Endpoint security telemetry
+### Process Monitoring
 
-## 🧪 Example Detection Workflow
-1. Monitor a target directory
-           ↓
-2. Detect file activity
-           ↓
-3. Read file contents
-           ↓
-4. Calculate Shannon entropy
-           ↓
-5. Compare entropy against detection criteria
-           ↓
-6. Classify file activity
-           ↓
-7. Monitor related process activity
-           ↓
-8. Generate security alert
-           ↓
-9. Display results on dashboard
+Process monitoring provides an additional signal that can help identify potentially suspicious system activity.
 
-## 📌 Current Project Scope
+Combining multiple indicators can improve the reliability of ransomware detection.
 
-The current implementation focuses on:
+---
 
-File entropy analysis
-File-system monitoring
-Process monitoring
-Entropy aggregation
-Security alert generation
-React-based visualization
-Sample test-file analysis
+## 📌 Current Implementation
 
-The project is intended as a foundation that can be extended with additional ransomware detection techniques.
+### Implemented
 
-## 🔮 Future Enhancements
+- File-system monitoring
+- Shannon entropy calculation
+- Entropy classification
+- Process monitoring
+- Alert processing
+- JSON result processing
+- React dashboard
+- Entropy visualization
+- Alert table
+- Test files
+- Backend and frontend integration structure
 
-Potential future improvements include:
+### Project Status
 
-Machine-learning-based ransomware classification
-Real-time WebSocket alert streaming
-Advanced process behavior analysis
-File extension change detection
-File modification-rate analysis
-Process-to-file activity correlation
-Automated incident response
-Windows Event Log integration
-Threat intelligence integration
-Database-backed event storage
-User authentication and role-based access
-Email and notification alerts
-SIEM integration
-Advanced security analytics
-Docker-based deployment
-Cloud deployment
+The project is currently implemented as a cybersecurity research and demonstration system focused on ransomware early-warning detection.
+
+---
+
+## 🔮 Future Improvements
+
+### Detection Improvements
+
+- Machine-learning-based ransomware classification
+- Behavioral anomaly detection
+- Improved entropy-based detection
+- File extension behavior analysis
+- File encryption pattern detection
+- Multi-factor ransomware scoring
+
+### Monitoring Improvements
+
+- Real-time event streaming
+- Advanced process behavior analysis
+- Windows Event Log integration
+- System-level monitoring
+- Improved suspicious process detection
+
+### Dashboard Improvements
+
+- Real-time alert notifications
+- Historical attack analysis
+- Advanced filtering
+- Security event timeline
+- Risk scoring dashboard
+- Interactive threat investigation
+
+### Deployment Improvements
+
+- Docker support
+- Cloud deployment
+- Centralized monitoring
+- Database integration
+- Authentication and authorization
+- Production-grade logging
+
+---
 
 ## 📚 Learning Outcomes
 
-This project demonstrates practical experience with:
+### Cybersecurity
 
-Python cybersecurity development
-Ransomware detection concepts
-Shannon entropy
-File-system monitoring
-Process monitoring
-Event-driven programming
-Backend development
-React frontend development
-REST/API integration
-Data visualization
-Git and GitHub
-Full-stack application development
-Cybersecurity monitoring architecture
+- Understanding ransomware behavior
+- File-system monitoring
+- Process monitoring
+- Entropy-based analysis
+- Security alert generation
+
+### Python
+
+- File handling
+- Entropy calculation
+- Process management
+- Event monitoring
+- JSON processing
+
+### Web Development
+
+- React application development
+- Dashboard development
+- Data visualization
+- API communication
+- Frontend-backend integration
+
+### Software Development
+
+- Git version control
+- Project organization
+- Backend/frontend architecture
+- Debugging
+- Testing
+- Application deployment concepts
+
+---
 
 ## 👨‍💻 Author
 
-Nitiket Karmore
+### Nitiket Karmore
 
-B.Tech – Computer Science Engineering (Cybersecurity)
+B.Tech Computer Science Engineering — Cybersecurity
 
-Nagpur, Maharashtra, India
-
-GitHub
+### GitHub
 
 https://github.com/nitiketkarmore18
 
-Project Repository
+### Project Repository
 
 https://github.com/nitiketkarmore18/ransomware-early-detection-system-python-cybersecurity
 
-## ⭐ Project
+---
 
-If you find this project useful for learning about cybersecurity, ransomware detection, Python development, or security monitoring, consider giving the repository a ⭐ on GitHub.
+## 📄 License
 
-## ⚠️ Disclaimer
+### Project Usage
 
-This project is developed for educational, research, and defensive cybersecurity purposes only.
+This project is intended for educational, research, and cybersecurity demonstration purposes.
 
-It is intended to help understand ransomware detection techniques and security monitoring concepts.
+Please use the system responsibly and only on systems and files for which you have authorization.
 
-It should not be considered a replacement for professional endpoint detection and response (EDR), antivirus, backup, or enterprise security solutions.
+---
+
+## ⭐ Acknowledgements
+
+### Technologies
+
+This project was developed using open-source technologies and libraries including:
+
+- Python
+- React
+- Recharts
+- Watchdog
+- Axios
+- Socket.IO
+- Node.js
+- Git
+- GitHub
+
+### Purpose
+
+The project was developed to explore practical cybersecurity techniques for identifying ransomware-like behavior through file-system monitoring, entropy analysis, process monitoring, and security visualization.
