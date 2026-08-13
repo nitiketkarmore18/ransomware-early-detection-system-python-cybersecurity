@@ -165,6 +165,7 @@ The dashboard contains components for:
                     │    React Dashboard      │
                     │ Visualization & Alerts  │
                     └─────────────────────────┘
+ ```text
                     ---
 ## 🧠 Detection Methodology
 Shannon Entropy
