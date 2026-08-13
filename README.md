@@ -165,10 +165,10 @@ The dashboard contains components for:
                     │    React Dashboard      │
                     │ Visualization & Alerts  │
                     └─────────────────────────┘
- ```text
-                    ---
+ ```
+ ---
 ## 🧠 Detection Methodology
-Shannon Entropy
+### Shannon Entropy
 
 The project uses Shannon entropy to measure the randomness of file contents.
 
@@ -191,7 +191,7 @@ Encrypted files commonly exhibit high entropy, which makes entropy analysis usef
 
 Important: High entropy alone does not prove that a file is ransomware-encrypted. Compressed files, encrypted legitimate files, binaries, and other normal data can also have high entropy. Therefore, this project treats entropy as a detection signal rather than definitive proof of ransomware.
 
-📈 Risk Classification
+## 📈 Risk Classification
 
 The system assigns a risk level to analyzed files based on their entropy and analysis results.
 
@@ -218,7 +218,7 @@ Example classification:
 
 The project uses a configurable high-entropy threshold for identifying potentially suspicious files.
 
-🧰 Technology Stack
+## 🧰 Technology Stack
 Backend
 Python
 File-system monitoring
@@ -240,7 +240,8 @@ GitHub
 Node.js
 npm
 PowerShell
-📂 Project Structure
+
+## 📂 Project Structure
 ransomware-early-detection-system-python-cybersecurity/
 │
 ├── backend/
@@ -296,14 +297,17 @@ ransomware-early-detection-system-python-cybersecurity/
 ├── package.json
 ├── package-lock.json
 └── .gitignore
-⚙️ Installation & Setup
+---
+
+## ⚙️ Installation & Setup
 1. Clone the Repository
 git clone https://github.com/nitiketkarmore18/ransomware-early-detection-system-python-cybersecurity.git
 
 Navigate into the project:
 
 cd ransomware-early-detection-system-python-cybersecurity
-🐍 Backend Setup
+
+## 🐍 Backend Setup
 
 Navigate to the backend directory:
 
@@ -321,7 +325,8 @@ venv\Scripts\activate
 Install the required dependencies:
 
 pip install -r requirements.txt
-▶️ Running the Backend
+
+## ▶️ Running the Backend
 
 From the backend directory:
 
@@ -333,7 +338,7 @@ python watchdog_runner.py
 
 The appropriate entry point depends on the monitoring workflow being tested.
 
-⚛️ Frontend Setup
+## ⚛️ Frontend Setup
 
 Open a new terminal and navigate to the frontend:
 
@@ -350,7 +355,8 @@ npm start
 The dashboard will normally be available at:
 
 http://localhost:3000
-🔬 Testing the Detection System
+
+## 🔬 Testing the Detection System
 
 The repository contains sample files under:
 
@@ -375,7 +381,8 @@ name → analyzed file name
 entropy → calculated Shannon entropy
 size → file size
 level → classification assigned by the system
-📊 Dashboard
+
+## 📊 Dashboard
 
 The frontend dashboard provides visual representations of the detection system.
 
@@ -397,7 +404,7 @@ Home Dashboard
 
 Provides the main interface for interacting with the ransomware early-warning system.
 
-🔐 Security Considerations
+## 🔐 Security Considerations
 
 This project is designed as a defensive cybersecurity research and monitoring system.
 
@@ -428,7 +435,8 @@ Process lineage
 User activity
 Network behavior
 Endpoint security telemetry
-🧪 Example Detection Workflow
+
+## 🧪 Example Detection Workflow
 1. Monitor a target directory
            ↓
 2. Detect file activity
@@ -446,7 +454,8 @@ Endpoint security telemetry
 8. Generate security alert
            ↓
 9. Display results on dashboard
-📌 Current Project Scope
+
+## 📌 Current Project Scope
 
 The current implementation focuses on:
 
@@ -460,7 +469,7 @@ Sample test-file analysis
 
 The project is intended as a foundation that can be extended with additional ransomware detection techniques.
 
-🔮 Future Enhancements
+## 🔮 Future Enhancements
 
 Potential future improvements include:
 
@@ -480,7 +489,8 @@ SIEM integration
 Advanced security analytics
 Docker-based deployment
 Cloud deployment
-📚 Learning Outcomes
+
+## 📚 Learning Outcomes
 
 This project demonstrates practical experience with:
 
@@ -497,7 +507,8 @@ Data visualization
 Git and GitHub
 Full-stack application development
 Cybersecurity monitoring architecture
-👨‍💻 Author
+
+## 👨‍💻 Author
 
 Nitiket Karmore
 
@@ -513,11 +524,11 @@ Project Repository
 
 https://github.com/nitiketkarmore18/ransomware-early-detection-system-python-cybersecurity
 
-⭐ Project
+## ⭐ Project
 
 If you find this project useful for learning about cybersecurity, ransomware detection, Python development, or security monitoring, consider giving the repository a ⭐ on GitHub.
 
-⚠️ Disclaimer
+## ⚠️ Disclaimer
 
 This project is developed for educational, research, and defensive cybersecurity purposes only.
 
