@@ -1,0 +1,13 @@
+{
+  "name": "ransomware-frontend",
+  "version": "1.0.0",
+  "dependencies": {
+    "react-router-dom": "^7.9.4",
+    "recharts": "^3.3.0"
+  },
+  "proxy": "http://localhost:5000",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}

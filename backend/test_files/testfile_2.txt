@@ -1,0 +1,4 @@
+import os
+
+with open("test_files/ransomware_like.txt", "wb") as f:
+    f.write(os.urandom(1024))  # 1 KB of random data

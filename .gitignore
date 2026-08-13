@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Local Git backups
+.git-old/
+.git-backup/
+TEST_IGNORE/
+
+# Old/unused frontend
+frontend/csecs-clone/
+
+# Old/unused frontend
+frontend/csecs-clone/
+
+# Generated ransomware analysis output
+backend/entropy_results.json
